@@ -1,11 +1,11 @@
-Summary:	KDE systray application to check your Gmail.
-Summary(pl):	Aplikacja do sprawdzania Twojego Gmaila w zasobniku KDE
+Summary:	KDE systray application to check your Gmail
+Summary(pl):	Aplikacja do sprawdzania Gmaila w zasobniku KDE
 Name:		kcheckgmail
 Version:	0.5.2
 Release:	0.2
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/kcheckgmail/%{name}-%{version}.tar.bz2
 # Source0-md5:	be004ebb1d8f3d951cb4fb7bffccab34
 URL:		http://kcheckgmail.sourceforge.net/
 BuildRequires:	autoconf
@@ -19,7 +19,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 KDE systray application to check your Gmail.
 
 %description -l pl
-Aplikacja do sprawdzania Twojego Gmaila w zasobniku KDE
+Aplikacja do sprawdzania Gmaila w zasobniku KDE.
 
 %prep
 %setup -q
@@ -40,7 +40,6 @@ export UNSERMAKE=%{_datadir}/unsermake/unsermake
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_pixmapsdir},%{_libdir}/%{name}}
 
 %{__make} install \
@@ -48,19 +47,14 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_pixmapsdir},%{_libdir}/%{name}}
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir}
 
+%find_lang %{name} --with-kde
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
 %{_desktopdir}/kde/kcheckgmail.desktop
-%{_iconsdir}/*
-%{_kdedocdir}/*
-%{_datadir}/apps/%{name}/*
-%lang(de) %{_datadir}/locale/de/LC_MESSAGES/kcheckgmail.mo
-%lang(es) %{_datadir}/locale/es/LC_MESSAGES/kcheckgmail.mo
-%lang(fr) %{_datadir}/locale/fr/LC_MESSAGES/kcheckgmail.mo
-%lang(it) %{_datadir}/locale/it/LC_MESSAGES/kcheckgmail.mo
-%lang(pt_BR) %{_datadir}/locale/pt_BR/LC_MESSAGES/kcheckgmail.mo
-%lang(ru) %{_datadir}/locale/ru/LC_MESSAGES/kcheckgmail.mo
+%{_iconsdir}/*/*/*/*
+%{_datadir}/apps/%{name}
