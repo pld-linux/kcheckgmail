@@ -1,0 +1,11 @@
+--- kcheckgmail-0.5.3a/src/prefs.kcfg~	2004-11-17 03:43:18.000000000 +0200
++++ kcheckgmail-0.5.3a/src/prefs.kcfg	2005-05-02 00:18:48.000000000 +0300
+@@ -61,7 +61,7 @@
+ 		</entry>
+ 		<entry name="CustomBrowser" type="Path">
+ 			<label>Use a custom browser</label>
+-			<default>firefox %u</default>
++			<default>mozilla-firefox %u</default>
+ 			<whatsthis>Use a custom browser other than the KDE default to check your Gmail</whatsthis>
+ 		</entry>
+ 	</group>
