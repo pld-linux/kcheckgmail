@@ -2,10 +2,12 @@
 Encoding=UTF-8
 Name=KCheckGmail
 Name[it]=KCheckGmail
-Comment=A Kicker applet to display how many email messages you have in your Gmail account.
-Comment[it]=Un applet del pannello per visualizzare quanti messaggi sono contenuti nel tuo account Gmail.
+Comment=A Kicker applet to display how many email messages you have in your Gmail account
+Comment[it]=Un applet del pannello per visualizzare quanti messaggi sono contenuti nel tuo account Gmail
+Comment[pl]=Aplet Kickera wyświetlający liczbę listów na koncie Gmail
 Exec=kcheckgmail
 Icon=kcheckgmail
 X-KDE-StartupNotify=true
 Type=Application
 Categories=Qt;KDE;Network;Email;
+# vi: encoding=utf-8
