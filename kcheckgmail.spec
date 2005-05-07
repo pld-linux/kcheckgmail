@@ -29,8 +29,8 @@ Aplikacja do sprawdzania Gmaila w zasobniku KDE.
 %patch0 -p1
 
 %build
-cp -f %{_datadir}/automake/config.sub admin
-export UNSERMAKE=%{_datadir}/unsermake/unsermake
+cp -f /usr/share/automake/config.sub admin
+export UNSERMAKE=/usr/share/unsermake/unsermake
 %{__sed} -i -e "s,SUBDIRS = \$(TOPSUBDIRS),SUBDIRS = doc icons po src," Makefile.am
 %{__make} -f admin/Makefile.common cvs
 
