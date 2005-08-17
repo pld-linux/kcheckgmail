@@ -1,13 +1,15 @@
 Summary:	KDE systray application to check your Gmail
 Summary(pl):	Aplikacja do sprawdzania Gmaila w zasobniku KDE
 Name:		kcheckgmail
-Version:	0.5.3a
-Release:	0.4
+Version:	0.5.4
+Release:	0.1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/kcheckgmail/%{name}-%{version}.tar.bz2
-# Source0-md5:	c6e00abca80a88ed0d3cdb445b765d8f
+# Source0-md5:	b9138b047ccd27a4a1ed5b6f9b9e1223
 Source1:	%{name}.desktop
+Source2:	%{name}-pl.po
+# Source2-md5:	b12c33dbd180dd7197f9f95dc78c5089
 Patch0:		%{name}-firefox-name.patch
 URL:		http://kcheckgmail.sourceforge.net/
 BuildRequires:	autoconf
@@ -27,6 +29,9 @@ Aplikacja do sprawdzania Gmaila w zasobniku KDE.
 %prep
 %setup -q
 %patch0 -p1
+
+rm po/pl.po
+install %{SOURCE2} po/pl.po
 
 %build
 cp -f /usr/share/automake/config.sub admin
