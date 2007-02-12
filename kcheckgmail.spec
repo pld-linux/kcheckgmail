@@ -1,5 +1,5 @@
 Summary:	KDE systray application to check your Gmail
-Summary(pl):	Aplikacja do sprawdzania Gmaila w zasobniku KDE
+Summary(pl.UTF-8):   Aplikacja do sprawdzania Gmaila w zasobniku KDE
 Name:		kcheckgmail
 Version:	0.5.5
 Release:	1
@@ -22,7 +22,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 KDE systray application to check your Gmail.
 
-%description -l pl
+%description -l pl.UTF-8
 Aplikacja do sprawdzania Gmaila w zasobniku KDE.
 
 %prep
