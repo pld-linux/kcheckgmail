@@ -10,6 +10,8 @@ Source0:	http://dl.sourceforge.net/kcheckgmail/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
 Source2:	%{name}-pl.po
 Patch0:		%{name}-firefox-name.patch
+Patch1:		kde-ac260.patch
+Patch2:		kcheckgmail-am.patch
 URL:		http://kcheckgmail.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -28,6 +30,8 @@ Aplikacja do sprawdzania Gmaila w zasobniku KDE.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 rm po/pl.po
 install %{SOURCE2} po/pl.po
