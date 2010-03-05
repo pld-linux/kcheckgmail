@@ -7,7 +7,7 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/kcheckgmail/%{name}-%{version}.tar.bz2
 # Source0-md5:	12d375119d7048d6649532b0b0cae32b
-Patch0:		%{name}-firefox-name.patch
+Patch0:		%{name}-default_browser.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://kcheckgmail.sourceforge.net/
 BuildRequires:	cmake >= 2.4.5
