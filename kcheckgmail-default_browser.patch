@@ -5,7 +5,7 @@
  		<entry name="CustomBrowser" type="Path">
  			<label>Use a custom browser</label>
 -			<default>firefox %u</default>
-+			<default>iceweasel %u</default>
++			<default>xdg-open %u</default>
  			<whatsthis>Use a custom browser other than the KDE default to check your Gmail</whatsthis>
  		</entry>
  	</group>
