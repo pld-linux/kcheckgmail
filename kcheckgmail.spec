@@ -28,15 +28,20 @@ Aplikacja do sprawdzania Gmaila w zasobniku KDE.
 %patch1 -p1
 
 %build
-%cmake  \
-	-DCMAKE_INSTALL_PREFIX="%{_prefix}"
+install -d build
+cd build
+%cmake .. \
+	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
+	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+%if "%{_lib}" == "lib64"
+	-DLIB_SUFFIX=64
+%endif
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-%{__make} install \
+%{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %find_lang %{name} --with-kde
