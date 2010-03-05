@@ -1,22 +1,19 @@
 Summary:	KDE systray application to check your Gmail
 Summary(pl.UTF-8):	Aplikacja do sprawdzania Gmaila w zasobniku KDE
 Name:		kcheckgmail
-Version:	0.5.7.7
-Release:	2
+Version:	0.6.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/kcheckgmail/%{name}-%{version}.tar.bz2
-# Source0-md5:	c0dd770e2f37408ed171a67cd7572e5d
-Source1:	%{name}.desktop
+Source0:	http://downloads.sourceforge.net/kcheckgmail/%{name}-%{version}.tar.bz2
+# Source0-md5:	12d375119d7048d6649532b0b0cae32b
 Patch0:		%{name}-firefox-name.patch
-Patch1:		kde-am.patch
+Patch1:		%{name}-desktop.patch
 URL:		http://kcheckgmail.sourceforge.net/
-BuildRequires:	autoconf >= 2.53
-BuildRequires:	automake >= 1:1.6.1
+BuildRequires:	cmake >= 2.4.5
 BuildRequires:	gettext-devel
-#BuildRequires:	kdelibs-devel >= 9:3.2.0
+BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -31,28 +28,16 @@ Aplikacja do sprawdzania Gmaila w zasobniku KDE.
 %patch1 -p1
 
 %build
-cp -f /usr/share/automake/config.sub admin/
-%{__sed} -i -e "s,SUBDIRS = \$(TOPSUBDIRS),SUBDIRS = doc icons po src,g" Makefile.am
-%{__make} -f admin/Makefile.common cvs
+%cmake  \
+	-DCMAKE_INSTALL_PREFIX="%{_prefix}"
 
-%configure \
-%if "%{_lib}" == "lib64"
-	--enable-libsuffix=64 \
-%endif
-	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
-	--with-qt-libraries=%{_libdir}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_pixmapsdir},%{_libdir}/%{name}}
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir} \
-	kde_libs_htmldir=%{_kdedocdir}
-
-install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/kde
+	DESTDIR=$RPM_BUILD_ROOT
 
 %find_lang %{name} --with-kde
 
@@ -61,9 +46,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README TODO 
-%attr(755,root,root) %{_bindir}/*
-%{_desktopdir}/kde/kcheckgmail.desktop
+%doc AUTHORS README TODO
+%attr(755,root,root) %{_bindir}/kcheckgmail
+%{_desktopdir}/kde4/kcheckgmail.desktop
 %{_iconsdir}/*/*/*/*
 %{_datadir}/apps/%{name}
 %{_mandir}/man1/kcheckgmail.1*
