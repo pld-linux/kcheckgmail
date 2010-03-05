@@ -1,0 +1,9 @@
+--- kcheckgmail-0.6.0/src/kcheckgmail.desktop~	2010-01-13 23:57:55.000000000 +0100
++++ kcheckgmail-0.6.0/src/kcheckgmail.desktop	2010-03-05 11:21:32.378777518 +0100
+@@ -40,4 +40,5 @@
+ Icon=kcheckgmail
+ X-KDE-StartupNotify=true
+ Type=Application
+-Categories=Qt;KDE;Network;
++Categories=Qt;KDE;Network;Email;
++# vi: encoding=utf-8
