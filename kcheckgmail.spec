@@ -10,9 +10,14 @@ Source0:	http://downloads.sourceforge.net/kcheckgmail/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-default_browser.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://kcheckgmail.sourceforge.net/
+BuildRequires:	Qt3Support-devel
+BuildRequires:	QtSvg-devel
+BuildRequires:	automoc4
 BuildRequires:	cmake >= 2.4.5
 BuildRequires:	gettext-devel
 BuildRequires:	kde4-kdelibs-devel
+BuildRequires:	qt4-build
+BuildRequires:	qt4-qmake
 BuildRequires:	rpmbuild(macros) >= 1.129
 Suggests:	xdg-utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
